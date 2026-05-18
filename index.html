@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>빡빈킹 | 나만의 공간</title>
+    <meta
+      name="description"
+      content="코딩을 배우며 만드는 나만의 웹사이트입니다."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Noto+Sans+KR:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="logo" href="#">빡빈킹</a>
+      <button
+        class="menu-btn"
+        type="button"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="#about">소개</a>
+        <a href="#learning">공부 중</a>
+        <a href="#contact">연락</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="hero-badge">✦ 나만의 첫 웹사이트</p>
+        <h1>
+          안녕, 나는
+          <span class="gradient-text">빡빈킹</span>
+        </h1>
+        <p class="hero-lead">
+          Cursor로 코딩을 시작했고,<br />
+          이 페이지는 내가 직접 만든 작은 인터넷 집이에요.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#about">더 알아보기</a>
+          <a
+            class="btn btn-ghost"
+            href="https://github.com/wjdqls21c"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </div>
+      </section>
+
+      <section class="card-section" id="about">
+        <article class="card">
+          <h2>👋 소개</h2>
+          <p>
+            안녕하세요! 저는 지금 코딩을 배우는 중이에요. 어렵지만 재밌고,
+            하루하루 조금씩 나아지는 게 뿌듯합니다.
+          </p>
+          <p class="muted">
+            이 문장은 <strong>index.html</strong> 파일을 열어서 마음대로
+            바꿔보세요. 이름, 취미, 좋아하는 음식 뭐든 OK!
+          </p>
+        </article>
+
+        <article class="card card-accent">
+          <h2>💪 화이팅 메시지</h2>
+          <blockquote>빡빈킹 짱짱 — 오늘도 한 걸음!</blockquote>
+        </article>
+      </section>
+
+      <section class="learning" id="learning">
+        <h2>📚 지금 공부하는 것</h2>
+        <ul class="tag-list">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Cursor</li>
+          <li>Git & GitHub</li>
+        </ul>
+        <p class="learning-note">
+          나중에 JavaScript도 배우면 버튼이 움직이고, 게임도 만들 수 있어요.
+        </p>
+      </section>
+
+      <section class="timeline">
+        <h2>🗓️ 기록</h2>
+        <ol>
+          <li>
+            <time>2026</time>
+            <span>Cursor 설치 &amp; 첫 폴더 연결</span>
+          </li>
+          <li>
+            <time>2026</time>
+            <span>GitHub 연동 완료</span>
+          </li>
+          <li>
+            <time>오늘</time>
+            <span class="highlight">나만의 사이트 오픈 🎉</span>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <p>Made with Cursor · <span id="year"></span></p>
+      <p class="footer-sub">
+        GitHub 주소가 있으면 위 GitHub 버튼 링크를 본인 계정으로 바꿔보세요.
+      </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
