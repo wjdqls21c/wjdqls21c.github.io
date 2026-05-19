@@ -36,6 +36,7 @@
       <nav class="site-nav" id="site-nav">
         <a href="#about">소개</a>
         <a href="#learning">공부 중</a>
+        <a href="#stats">방문자</a>
         <a href="#contact">연락</a>
       </nav>
     </header>
@@ -95,6 +96,37 @@
         </p>
       </section>
 
+      <section class="stats" id="stats">
+        <h2>📊 방문자</h2>
+        <p class="stats-intro">이 사이트에 들어온 사람 수예요. (대략적인 수치)</p>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <p class="stat-label">오늘 방문 (사이트)</p>
+            <p class="stat-value">
+              <span id="busuanzi_value_site_uv" class="stat-number">…</span>
+              <span class="stat-unit">명</span>
+            </p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">이 페이지 조회 (누적)</p>
+            <p class="stat-value">
+              <span id="busuanzi_value_page_pv" class="stat-number">…</span>
+              <span class="stat-unit">회</span>
+            </p>
+          </article>
+        </div>
+        <p class="stats-note">
+          더 자세한 그래프·날짜별 통계는
+          <a
+            href="https://analytics.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Google Analytics</a
+          >
+          에서 볼 수 있어요.
+        </p>
+      </section>
+
       <section class="timeline">
         <h2>🗓️ 기록</h2>
         <ol>
@@ -121,10 +153,15 @@
     <footer class="site-footer" id="contact">
       <p>Made with Cursor · <span id="year"></span></p>
       <p class="footer-sub">
-        방문자 수는 Google Analytics에서 확인 (설정: <code>방문자-통계-설정.md</code>)
+        방문자 숫자는 위 📊 섹션 · 상세는 Google Analytics
       </p>
     </footer>
 
+    <script
+      async
+      src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+    ></script>
+    <script src="js/visitor-counter.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
