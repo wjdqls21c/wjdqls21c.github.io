@@ -8,7 +8,15 @@ export const firebaseConfig = {
   appId: "1:58315329987:web:7683897f3df9831ae52d76",
 };
 
+// 관리자 Gmail (Google 로그인 이메일과 동일해야 함)
+export const adminEmail = "";
+
 export function isFirebaseConfigured() {
   const c = firebaseConfig;
   return Boolean(c.apiKey && c.projectId && c.appId);
+}
+
+export function isAdminEmail(email) {
+  if (!adminEmail || !email) return false;
+  return email.toLowerCase() === adminEmail.toLowerCase();
 }

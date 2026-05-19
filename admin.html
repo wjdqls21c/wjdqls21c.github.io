@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>방명록 관리 | 빡빈킹</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Noto+Sans+KR:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body class="admin-page">
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="logo" href="index.html">빡빈킹 관리</a>
+      <nav class="site-nav site-nav--open">
+        <a href="index.html">← 사이트로</a>
+      </nav>
+    </header>
+
+    <main class="admin-main">
+      <h1>🛠️ 방명록 관리</h1>
+      <p class="admin-lead">로그인 후 방명을 삭제할 수 있어요.</p>
+
+      <section id="admin-setup" class="admin-panel admin-panel--warn hidden">
+        <p><strong>관리자 이메일 설정 필요</strong></p>
+        <p class="muted">
+          <code>js/firebase-config.js</code> 파일의
+          <code>adminEmail</code>에 본인 Gmail을 넣고, Firebase 규칙도
+          업데이트하세요. (<code>관리자-설정.md</code> 참고)
+        </p>
+      </section>
+
+      <section id="admin-login" class="admin-panel">
+        <p class="muted">관리자 Google 계정으로 로그인하세요.</p>
+        <button type="button" class="btn btn-primary" id="btn-google-login">
+          Google로 로그인
+        </button>
+      </section>
+
+      <section id="admin-denied" class="admin-panel admin-panel--warn hidden">
+        <p><strong>권한이 없습니다</strong></p>
+        <p class="muted" id="denied-email"></p>
+        <button type="button" class="btn btn-ghost" id="btn-logout-denied">
+          로그아웃
+        </button>
+      </section>
+
+      <section id="admin-dashboard" class="admin-panel hidden">
+        <div class="admin-toolbar">
+          <p class="admin-user">
+            <span id="admin-user-email"></span> 으로 로그인됨
+          </p>
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-logout">
+            로그아웃
+          </button>
+        </div>
+        <p
+          id="admin-status"
+          class="admin-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <ul id="admin-list" class="guestbook-list admin-list"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="js/admin.js"></script>
+  </body>
+</html>

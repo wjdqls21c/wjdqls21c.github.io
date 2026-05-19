@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /guestbook/{messageId} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['name', 'message', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.message is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 20
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 300;
+      // 아래 이메일을 본인 Gmail로 바꾸세요 (firebase-config.js adminEmail 과 동일)
+      allow delete: if request.auth != null
+        && request.auth.token.email == 'YOUR_GMAIL@gmail.com';
+      allow update: if false;
+    }
+  }
+}
