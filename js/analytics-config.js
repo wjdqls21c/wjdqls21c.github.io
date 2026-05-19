@@ -2,5 +2,5 @@
 // https://analytics.google.com 에서 발급 후 아래에 붙여넣기
 // 예: ga4MeasurementId: "G-ABC123XY12"
 window.SITE_ANALYTICS = {
-  ga4MeasurementId: "",
+  ga4MeasurementId: "G-SX7QSX6GCC",
 };
