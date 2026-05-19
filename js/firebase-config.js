@@ -9,7 +9,7 @@ export const firebaseConfig = {
 };
 
 // 관리자 Gmail (Google 로그인 이메일과 동일해야 함)
-export const adminEmail = "";
+export const adminEmail = "wjdqls21c@gmail.com";
 
 export function isFirebaseConfigured() {
   const c = firebaseConfig;

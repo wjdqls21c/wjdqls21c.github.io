@@ -12,7 +12,7 @@ service cloud.firestore {
         && request.resource.data.message.size() <= 300;
       // 아래 이메일을 본인 Gmail로 바꾸세요 (firebase-config.js adminEmail 과 동일)
       allow delete: if request.auth != null
-        && request.auth.token.email == 'YOUR_GMAIL@gmail.com';
+        && request.auth.token.email == 'wjdqls21c@gmail.com';
       allow update: if false;
     }
   }
