@@ -343,6 +343,144 @@ main {
   font-weight: 600;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.guestbook {
+  margin-bottom: 3rem;
+}
+
+.guestbook h2 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.guestbook-intro {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+}
+
+.guestbook-setup {
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 107, 74, 0.08);
+  border: 1px solid rgba(255, 107, 74, 0.25);
+  border-radius: var(--radius);
+}
+
+.guestbook-setup .muted {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.guestbook-form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+}
+
+.guestbook-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.guestbook-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.guestbook-form input,
+.guestbook-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  resize: vertical;
+}
+
+.guestbook-form input:focus,
+.guestbook-form textarea:focus {
+  outline: 2px solid rgba(92, 225, 230, 0.45);
+  outline-offset: 2px;
+}
+
+.guestbook-submit {
+  justify-self: start;
+  border: none;
+  cursor: pointer;
+}
+
+.guestbook-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.guestbook-status {
+  min-height: 1.5rem;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.guestbook-status.is-error {
+  color: #ff8a7a;
+}
+
+.guestbook-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.guestbook-empty {
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--muted);
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.guestbook-item {
+  padding: 1.25rem 1.35rem;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+}
+
+.guestbook-name {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.guestbook-time {
+  display: block;
+  margin: 0 0 0.65rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.guestbook-message {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .learning,
 .timeline {
   margin-bottom: 3rem;

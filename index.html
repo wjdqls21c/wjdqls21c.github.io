@@ -37,6 +37,7 @@
         <a href="#about">소개</a>
         <a href="#learning">공부 중</a>
         <a href="#stats">방문자</a>
+        <a href="#guestbook">방명록</a>
         <a href="#contact">연락</a>
       </nav>
     </header>
@@ -121,6 +122,58 @@
         </p>
       </section>
 
+      <section class="guestbook" id="guestbook">
+        <h2>📝 방명록</h2>
+        <p class="guestbook-intro">응원 한마디 남겨 주세요. 모두에게 공개됩니다.</p>
+
+        <div id="guestbook-setup" class="guestbook-setup">
+          <p><strong>방명록 준비 중</strong></p>
+          <p class="muted">
+            Firebase 설정이 필요해요. 폴더 안
+            <strong>방명록-설정.md</strong> 파일을 열어 5~10분만 따라 하면
+            글쓰기가 열립니다.
+          </p>
+        </div>
+
+        <div id="guestbook-form-wrap" class="guestbook-form-wrap hidden">
+          <form id="guestbook-form" class="guestbook-form">
+            <label class="guestbook-field">
+              <span class="guestbook-label">닉네임</span>
+              <input
+                type="text"
+                name="name"
+                maxlength="20"
+                required
+                placeholder="예: 빡빈킹 친구"
+                autocomplete="nickname"
+              />
+            </label>
+            <label class="guestbook-field">
+              <span class="guestbook-label">메시지</span>
+              <textarea
+                name="message"
+                rows="4"
+                maxlength="300"
+                required
+                placeholder="응원이나 하고 싶은 말을 남겨 주세요."
+              ></textarea>
+            </label>
+            <button class="btn btn-primary guestbook-submit" type="submit">
+              방명 남기기
+            </button>
+          </form>
+        </div>
+
+        <p
+          id="guestbook-status"
+          class="guestbook-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+        <ul id="guestbook-list" class="guestbook-list" aria-live="polite"></ul>
+      </section>
+
       <section class="timeline">
         <h2>🗓️ 기록</h2>
         <ol>
@@ -138,7 +191,11 @@
           </li>
           <li>
             <time>오늘</time>
-            <span>방문자 통계(GA4) 연결 준비</span>
+            <span>방문자 통계(GA4) 연결</span>
+          </li>
+          <li>
+            <time>오늘</time>
+            <span class="highlight">방명록 추가</span>
           </li>
         </ol>
       </section>
@@ -157,5 +214,6 @@
     ></script>
     <script src="js/visitor-counter.js"></script>
     <script src="js/main.js"></script>
+    <script type="module" src="js/guestbook.js"></script>
   </body>
 </html>
