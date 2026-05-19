@@ -338,6 +338,13 @@ main {
   opacity: 0.8;
 }
 
+.footer-sub code {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.85em;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+}
+
 @media (max-width: 720px) {
   .menu-btn {
     display: flex;
