@@ -310,6 +310,17 @@ main {
   transition: opacity 0.3s;
 }
 
+.stat-card--hero {
+  max-width: 20rem;
+  margin: 0 auto 1rem;
+  border-color: rgba(255, 107, 74, 0.35);
+}
+
+.stat-number--big {
+  font-size: clamp(2.75rem, 10vw, 4rem);
+  letter-spacing: -0.02em;
+}
+
 .stat-number:not(.is-ready) {
   opacity: 0.5;
 }

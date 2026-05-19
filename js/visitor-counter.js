@@ -1,34 +1,33 @@
 (function () {
-  const MAX_WAIT_MS = 12000;
-  const POLL_MS = 200;
+  const el = document.getElementById("finicount_views");
+  if (!el) return;
 
-  function isLoaded(el) {
-    if (!el) return false;
-    const text = el.textContent.trim();
-    return text.length > 0 && text !== "…" && !/\.{2,}/.test(text);
-  }
+  const MAX_WAIT_MS = 15000;
+  const start = Date.now();
 
   function markReady() {
-    document.querySelectorAll(".stat-number").forEach((el) => {
-      el.classList.add("is-ready");
-    });
+    const text = el.textContent.trim();
+    if (!text || text === "…" || text === "-") return false;
+    el.classList.add("is-ready");
+    return true;
   }
 
-  const start = Date.now();
-  const timer = window.setInterval(() => {
-    const uv = document.getElementById("busuanzi_value_site_uv");
-    const pv = document.getElementById("busuanzi_value_page_pv");
+  const observer = new MutationObserver(() => {
+    if (markReady()) observer.disconnect();
+  });
+  observer.observe(el, { childList: true, characterData: true, subtree: true });
 
-    if (isLoaded(uv) && isLoaded(pv)) {
+  const timer = window.setInterval(() => {
+    if (markReady()) {
       window.clearInterval(timer);
-      markReady();
       return;
     }
-
     if (Date.now() - start > MAX_WAIT_MS) {
       window.clearInterval(timer);
-      if (!isLoaded(uv)) uv.textContent = "-";
-      if (!isLoaded(pv)) pv.textContent = "-";
+      if (!el.classList.contains("is-ready")) {
+        el.textContent = "0";
+        el.classList.add("is-ready");
+      }
     }
-  }, POLL_MS);
+  }, 300);
 })();

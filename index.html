@@ -98,32 +98,26 @@
 
       <section class="stats" id="stats">
         <h2>📊 방문자</h2>
-        <p class="stats-intro">이 사이트에 들어온 사람 수예요. (대략적인 수치)</p>
-        <div class="stats-grid">
-          <article class="stat-card">
-            <p class="stat-label">오늘 방문 (사이트)</p>
-            <p class="stat-value">
-              <span id="busuanzi_value_site_uv" class="stat-number">…</span>
-              <span class="stat-unit">명</span>
-            </p>
-          </article>
-          <article class="stat-card">
-            <p class="stat-label">이 페이지 조회 (누적)</p>
-            <p class="stat-value">
-              <span id="busuanzi_value_page_pv" class="stat-number">…</span>
-              <span class="stat-unit">회</span>
-            </p>
-          </article>
-        </div>
+        <p class="stats-intro">
+          이 사이트가 열린 <strong>총 횟수</strong>예요. (들어올 때마다 +1, 새로고침도
+          포함)
+        </p>
+        <article class="stat-card stat-card--hero">
+          <p class="stat-label">총 방문</p>
+          <p class="stat-value">
+            <span id="finicount_views" class="stat-number stat-number--big">…</span>
+            <span class="stat-unit">회</span>
+          </p>
+        </article>
         <p class="stats-note">
-          더 자세한 그래프·날짜별 통계는
+          <strong>오늘 몇 명</strong> 같은 자세한 통계는
           <a
             href="https://analytics.google.com/"
             target="_blank"
             rel="noopener noreferrer"
             >Google Analytics</a
           >
-          에서 볼 수 있어요.
+          → <em>실시간</em> / <em>사용자</em> 메뉴에서 확인하세요.
         </p>
       </section>
 
@@ -159,7 +153,7 @@
 
     <script
       async
-      src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+      src="https://finicounter.eu.org/finicounter.js"
     ></script>
     <script src="js/visitor-counter.js"></script>
     <script src="js/main.js"></script>
