@@ -20,54 +20,25 @@
   </head>
   <body>
     <div class="space-sky" aria-hidden="true">
-      <div class="space-nebula"></div>
-      <canvas id="space-canvas" class="space-canvas"></canvas>
+      <img
+        class="space-bg-photo"
+        src="img/space/night-sky.jpg"
+        alt=""
+        width="1920"
+        height="1280"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="space-overlay"></div>
       <div class="space-moon">
-        <svg
-          class="moon-svg"
-          viewBox="0 0 120 120"
-          role="img"
-          aria-label="달"
-        >
-          <defs>
-            <radialGradient id="moonSphere" cx="38%" cy="32%" r="65%">
-              <stop offset="0%" stop-color="#fffef6" />
-              <stop offset="45%" stop-color="#e8e4d6" />
-              <stop offset="100%" stop-color="#a8a498" />
-            </radialGradient>
-            <radialGradient id="moonShade" cx="75%" cy="55%" r="55%">
-              <stop offset="0%" stop-color="rgba(20, 22, 35, 0.55)" />
-              <stop offset="100%" stop-color="rgba(20, 22, 35, 0)" />
-            </radialGradient>
-            <filter id="moonGlow" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="4" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          <circle
-            cx="60"
-            cy="60"
-            r="54"
-            fill="url(#moonSphere)"
-            filter="url(#moonGlow)"
-          />
-          <!-- 달의 바다 (maria) — 실제 위치에 가깝게 -->
-          <ellipse cx="42" cy="52" rx="22" ry="18" fill="#8a8778" opacity="0.35" />
-          <ellipse cx="68" cy="48" rx="14" ry="12" fill="#7a7768" opacity="0.3" />
-          <ellipse cx="55" cy="72" rx="18" ry="14" fill="#848078" opacity="0.28" />
-          <ellipse cx="78" cy="62" rx="9" ry="8" fill="#757268" opacity="0.25" />
-          <ellipse cx="32" cy="68" rx="10" ry="9" fill="#7d7a6e" opacity="0.22" />
-          <circle cx="72" cy="38" r="5" fill="#9a9688" opacity="0.2" />
-          <circle cx="48" cy="35" r="3.5" fill="#b8b4a8" opacity="0.35" />
-          <path
-            d="M 28 45 Q 50 30 75 42 Q 90 55 82 75 Q 60 92 38 80 Q 22 62 28 45 Z"
-            fill="url(#moonShade)"
-          />
-          <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
-        </svg>
+        <img
+          class="space-moon-photo"
+          src="img/space/moon.jpg"
+          alt=""
+          width="600"
+          height="600"
+          decoding="async"
+        />
       </div>
       <div id="space-shooting" class="space-shooting"></div>
     </div>
@@ -268,6 +239,12 @@
       <p class="footer-sub">
         방문자 숫자는 위 📊 섹션 ·
         <a href="admin.html">관리</a>
+        · 배경·달 사진 <a
+          href="https://www.nasa.gov/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >NASA</a
+        >
       </p>
     </footer>
 
