@@ -17,6 +17,8 @@ const statusEl = document.getElementById("guestbook-status");
 const setupEl = document.getElementById("guestbook-setup");
 const formWrap = document.getElementById("guestbook-form-wrap");
 
+const POSTIT_COLORS = ["yellow", "pink", "mint", "sky", "lavender"];
+
 function setStatus(text, isError = false) {
   if (!statusEl) return;
   statusEl.textContent = text;
@@ -26,12 +28,27 @@ function setStatus(text, isError = false) {
 function formatDate(date) {
   if (!date) return "";
   return new Intl.DateTimeFormat("ko-KR", {
-    year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
   }).format(date);
+}
+
+function hashString(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) {
+    h = (h << 5) - h + str.charCodeAt(i);
+    h |= 0;
+  }
+  return Math.abs(h);
+}
+
+function postitStyle(docId) {
+  const h = hashString(docId);
+  const color = POSTIT_COLORS[h % POSTIT_COLORS.length];
+  const tilt = -8 + (h % 17);
+  return { color, tilt };
 }
 
 function renderMessages(snapshot) {
@@ -39,31 +56,38 @@ function renderMessages(snapshot) {
 
   if (snapshot.empty) {
     listEl.innerHTML =
-      '<li class="guestbook-empty">아직 글이 없어요. 첫 방명을 남겨 보세요!</li>';
+      '<li class="postit-empty">아직 붙은 포스트잇이 없어요.<br />첫 번째로 하나 붙여 주세요!</li>';
     return;
   }
 
   listEl.innerHTML = "";
-  snapshot.forEach((doc) => {
-    const data = doc.data();
+  snapshot.forEach((docSnap) => {
+    const data = docSnap.data();
+    const { color, tilt } = postitStyle(docSnap.id);
+
     const li = document.createElement("li");
-    li.className = "guestbook-item";
+    li.className = `postit-note postit-note--${color}`;
+    li.style.setProperty("--tilt", `${tilt}deg`);
+
+    const tape = document.createElement("span");
+    tape.className = "postit-tape";
+    tape.setAttribute("aria-hidden", "true");
 
     const name = document.createElement("p");
-    name.className = "guestbook-name";
+    name.className = "postit-name";
     name.textContent = data.name || "익명";
 
+    const body = document.createElement("p");
+    body.className = "postit-message";
+    body.textContent = data.message || "";
+
     const time = document.createElement("time");
-    time.className = "guestbook-time";
+    time.className = "postit-time";
     const created = data.createdAt?.toDate?.();
     time.dateTime = created ? created.toISOString() : "";
     time.textContent = formatDate(created);
 
-    const body = document.createElement("p");
-    body.className = "guestbook-message";
-    body.textContent = data.message || "";
-
-    li.append(name, time, body);
+    li.append(tape, name, body, time);
     listEl.appendChild(li);
   });
 }
@@ -84,7 +108,7 @@ async function initGuestbook() {
     showSetupMode();
     if (listEl) {
       listEl.innerHTML =
-        '<li class="guestbook-empty">Firebase 설정 후 방명록이 열립니다. (<code>방명록-설정.md</code> 참고)</li>';
+        '<li class="postit-empty">Firebase 설정 후 응원벽이 열립니다. (<code>방명록-설정.md</code> 참고)</li>';
     }
     return;
   }
@@ -101,7 +125,7 @@ async function initGuestbook() {
       q,
       (snapshot) => renderMessages(snapshot),
       () => {
-        setStatus("방명록을 불러오지 못했어요. Firebase 규칙을 확인해 주세요.", true);
+        setStatus("응원벽을 불러오지 못했어요. Firebase 규칙을 확인해 주세요.", true);
       }
     );
 
@@ -112,13 +136,13 @@ async function initGuestbook() {
       const message = String(fd.get("message") || "").trim();
 
       if (!name || !message) {
-        setStatus("닉네임과 메시지를 모두 입력해 주세요.", true);
+        setStatus("이름과 응원 한 줄을 모두 입력해 주세요.", true);
         return;
       }
 
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
-      setStatus("올리는 중…");
+      setStatus("벽에 붙이는 중…");
 
       try {
         await addDoc(messagesRef, {
@@ -127,9 +151,9 @@ async function initGuestbook() {
           createdAt: serverTimestamp(),
         });
         form.reset();
-        setStatus("방명이 등록됐어요! 감사합니다 ✦");
+        setStatus("포스트잇을 붙였어요! 감사합니다 ✦");
       } catch {
-        setStatus("등록에 실패했어요. 잠시 후 다시 시도해 주세요.", true);
+        setStatus("붙이기에 실패했어요. 잠시 후 다시 시도해 주세요.", true);
       } finally {
         submitBtn.disabled = false;
       }
