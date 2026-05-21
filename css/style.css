@@ -1,5 +1,5 @@
 :root {
-  --bg: #0c0f14;
+  --bg: #05070f;
   --surface: #151a24;
   --surface-2: #1c2333;
   --text: #f0f4fc;
@@ -31,19 +31,147 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--text);
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 110%, #141b38 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 80% 0%, rgba(60, 40, 100, 0.35), transparent),
+    linear-gradient(180deg, #03050c 0%, #050810 40%, #020308 100%);
   overflow-x: hidden;
 }
 
-.bg-glow {
+/* —— 우주 배경 —— */
+.space-sky {
   position: fixed;
-  inset: -20% -10% auto;
-  height: 70vh;
-  background:
-    radial-gradient(ellipse 50% 60% at 20% 0%, rgba(255, 107, 74, 0.22), transparent),
-    radial-gradient(ellipse 40% 50% at 80% 10%, rgba(92, 225, 230, 0.15), transparent);
-  pointer-events: none;
+  inset: 0;
   z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.space-nebula {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 15% 20%, rgba(255, 107, 74, 0.12), transparent),
+    radial-gradient(ellipse 45% 40% at 85% 15%, rgba(92, 225, 230, 0.1), transparent),
+    radial-gradient(ellipse 60% 50% at 50% 90%, rgba(88, 60, 160, 0.15), transparent);
+}
+
+.space-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.space-moon {
+  position: absolute;
+  top: clamp(3.5rem, 12vh, 7rem);
+  right: clamp(1rem, 6vw, 4rem);
+  width: clamp(64px, 12vw, 96px);
+  height: clamp(64px, 12vw, 96px);
+  z-index: 1;
+}
+
+.moon-disc {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 32%, #fffef8 0%, #f2efe0 35%, #d4cfc0 70%, #b8b2a4 100%);
+  box-shadow:
+    0 0 48px rgba(255, 248, 220, 0.28),
+    0 0 100px rgba(200, 210, 255, 0.08),
+    inset -10px -12px 24px rgba(80, 75, 90, 0.2);
+  animation: moon-glow 6s ease-in-out infinite;
+}
+
+.moon-disc::before,
+.moon-disc::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(120, 115, 105, 0.18);
+}
+
+.moon-disc::before {
+  width: 22%;
+  height: 22%;
+  top: 28%;
+  left: 22%;
+}
+
+.moon-disc::after {
+  width: 14%;
+  height: 14%;
+  top: 52%;
+  left: 48%;
+  background: rgba(120, 115, 105, 0.12);
+}
+
+@keyframes moon-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 48px rgba(255, 248, 220, 0.28),
+      0 0 100px rgba(200, 210, 255, 0.08),
+      inset -10px -12px 24px rgba(80, 75, 90, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 56px rgba(255, 248, 220, 0.36),
+      0 0 120px rgba(200, 210, 255, 0.12),
+      inset -10px -12px 24px rgba(80, 75, 90, 0.2);
+  }
+}
+
+.space-shooting {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.shooting-star {
+  position: absolute;
+  width: var(--shoot-length, 120px);
+  height: 2px;
+  transform-origin: left center;
+  transform: rotate(var(--shoot-angle, -35deg));
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0.95) 55%,
+    rgba(200, 230, 255, 0.4) 80%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  opacity: 0;
+  animation: shooting-fall ease-out forwards;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes shooting-fall {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--shoot-angle, -35deg)) translateX(0) scaleX(0.3);
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--shoot-angle, -35deg)) translateX(140px) scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moon-disc {
+    animation: none;
+  }
+
+  .shooting-star {
+    display: none;
+  }
 }
 
 .site-header {
@@ -55,7 +183,7 @@ body {
   justify-content: space-between;
   height: var(--header-h);
   padding: 0 1.5rem;
-  background: rgba(12, 15, 20, 0.75);
+  background: rgba(5, 8, 18, 0.72);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
