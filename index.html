@@ -126,6 +126,8 @@
         <p class="postit-intro">
           놀러 온 곳 벽에 포스트잇 붙이듯, 응원 한 줄을 남겨 주세요. 모두에게
           공개됩니다.
+          <span class="postit-hint">많아질수록 작아지고, 지나가면 바람에 흔들려요.
+            포스트잇을 누르면 크게 볼 수 있어요.</span>
         </p>
 
         <div id="guestbook-setup" class="postit-setup">
@@ -224,6 +226,30 @@
     ></script>
     <script src="js/visitor-counter.js"></script>
     <script src="js/main.js"></script>
+    <div
+      id="postit-modal"
+      class="postit-modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="postit-modal-title"
+      hidden
+    >
+      <button
+        type="button"
+        class="postit-modal-backdrop"
+        aria-label="닫기"
+      ></button>
+      <article id="postit-modal-card" class="postit-modal-card">
+        <span class="postit-modal-tape" aria-hidden="true"></span>
+        <p id="postit-modal-title" class="postit-modal-name"></p>
+        <p id="postit-modal-message" class="postit-modal-message"></p>
+        <time id="postit-modal-time" class="postit-modal-time"></time>
+      </article>
+      <button type="button" class="postit-modal-close" aria-label="닫기">
+        ×
+      </button>
+    </div>
+
     <script type="module" src="js/guestbook.js"></script>
   </body>
 </html>
